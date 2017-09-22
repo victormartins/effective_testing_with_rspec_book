@@ -1,3 +1,5 @@
+require './spec_helper'
+
 class Coffee
   require 'bigdecimal'
 
@@ -38,8 +40,10 @@ RSpec.describe 'A cup of coffee' do
   it 'costs $1' do
     expect(coffee.price).to eq(1.00)
   end
+
   context 'with milk' do
     before { coffee.add :milk }
+
     it 'costs $1.25' do
       expect(coffee.price).to eq(1.25)
     end
@@ -47,6 +51,7 @@ RSpec.describe 'A cup of coffee' do
 
   context 'with an unkown ingredient' do
     before { coffee.add :unicorn_blood }
+
     it 'raises an error' do
       expect{ coffee.price }.to raise_error("ingredient [unicorn_blood] not found!")
     end
