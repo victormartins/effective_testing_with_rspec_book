@@ -1,0 +1,32 @@
+
+Randomized with seed 19668
+
+A cup of coffee
+  costs $1
+  with milk
+    costs $1.25
+  with an unkown ingredient
+    raises an error
+
+Tea
+  is hot (FAILED - 1)
+  tastes like Earl Grey
+
+Failures:
+
+  1) Tea is hot
+     Failure/Error: expect(tea.temperature).to be > 200.0
+
+     NoMethodError:
+       undefined method `temperature' for #<Tea:0x007fc360a13800>
+     # ./chp2/spec/tea_spec.rb:19:in `block (2 levels) in <top (required)>'
+
+Finished in 0.00361 seconds (files took 0.08791 seconds to load)
+5 examples, 1 failure
+
+Failed examples:
+
+rspec ./chp2/spec/tea_spec.rb:18 # Tea is hot
+
+Randomized with seed 19668
+

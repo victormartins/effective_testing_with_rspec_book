@@ -38,6 +38,7 @@ RSpec.describe 'A cup of coffee' do
   let(:coffee) { Coffee.new }
 
   it 'costs $1' do
+    # pending 'not implemented'
     expect(coffee.price).to eq(1.00)
   end
 
