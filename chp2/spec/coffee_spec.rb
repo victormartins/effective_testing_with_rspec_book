@@ -5,7 +5,7 @@ class Coffee
 
   KNOWN_INGREDIENTS = {
     milk: { price: 0.25 }
-  }
+  }.freeze
 
   def ingredients
     @ingredients ||= []
@@ -54,7 +54,7 @@ RSpec.describe 'A cup of coffee' do
     before { coffee.add :unicorn_blood }
 
     it 'raises an error' do
-      expect{ coffee.price }.to raise_error("ingredient [unicorn_blood] not found!")
+      expect { coffee.price }.to raise_error('ingredient [unicorn_blood] not found!')
     end
   end
 end
