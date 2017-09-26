@@ -19,34 +19,35 @@ module ExpenseTracker
       parsed = JSON.parse(last_response.body)
       expect(parsed).to include('expense_id' => a_kind_of(String))
 
-      expense.merge(parsed['expense_id'])
+      expense.merge('expense_id' => parsed['expense_id'])
     end
 
     it 'records submitted expenses' do
-      # coffee = post_expense(
-      #   'payee'  => 'Starbucks',
-      #   'amount' => BigDecimal.new('5.75'),
-      #   'date'   => '2017-06-10'
-      # )
-      #
-      # zoo = post_expense(
-      #   'payee'  => 'Zoo',
-      #   'amount' => BigDecimal.new('15.25'),
-      #   'date'   => '2017-06-10'
-      # )
-      #
-      # groceries = post_expense(
-      #   'payee'  => 'Whole Foods',
-      #   'amount' => BigDecimal.new('95.20'),
-      #   'date'   => '2017-06-11'
-      # )
+      coffee = post_expense(
+        'payee'  => 'Starbucks',
+        'amount' => BigDecimal.new('5.75'),
+        'date'   => '2017-06-10'
+      )
 
-      puts ''
-      puts '-' * 50
-      puts "I'M ON PAGE 55".center(50)
-      puts '-' * 50
-      puts ''
+      zoo = post_expense(
+        'payee'  => 'Zoo',
+        'amount' => BigDecimal.new('15.25'),
+        'date'   => '2017-06-10'
+      )
 
+      groceries = post_expense(
+        'payee'  => 'Whole Foods',
+        'amount' => BigDecimal.new('95.20'),
+        'date'   => '2017-06-11'
+      )
+
+      get '/expenses/2017-06-10'
+
+      pending('Need to persist the expenses first')
+
+      expect(last_response.status).to eq(200)
+      expenses = JSON.parse(last_response.body)
+      expect(expenses).to contain_exactly(coffee, zoo)
     end
   end
 end
