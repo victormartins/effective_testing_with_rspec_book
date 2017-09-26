@@ -9,6 +9,11 @@ module ExpenseTracker
     end
 
     get '/expenses/:date' do
+      puts ''
+      puts '-' * 50
+      puts "PAGE 62".center(50)
+      puts '-' * 50
+      puts ''
       JSON.generate([])
     end
   end
